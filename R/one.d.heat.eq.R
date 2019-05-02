@@ -1,3 +1,7 @@
+#' The Heat Equation Solver
+#' This function takes in all the options possible in order to choose how to solve the heat equation, the boundary conditions, and what language to use.
+#' @export
+
 one.d.heat.eq <- function(init.dat, n = 50000, 
                           boundary = c("Neumann", "Dirichlet"), 
                           alpha = 1, dt = 0.1, eps = 1e-5, cpp = T,
