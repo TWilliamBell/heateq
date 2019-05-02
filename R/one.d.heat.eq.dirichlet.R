@@ -7,7 +7,6 @@
 #' @param eps 
 #'
 #' @return
-#' @export
 #'
 #' @examples
 
