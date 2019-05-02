@@ -1,1 +1,0 @@
-is.scalar <- function(x) {is.vector(x) | length(x) == 1}
