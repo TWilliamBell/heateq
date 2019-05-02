@@ -1,3 +1,5 @@
+#' @export
+
 plot.heat <- function(x, cex = 0.01, xaxt = "n", 
                       yaxt = "n", mar = c(0, 0, 0, 0), ...) {
   if (isTRUE(x$intermediates.saved)) {
