@@ -23,6 +23,9 @@ r_one.d.heat.eq(n = 1000, init.dat = dgamma(seq(0, 5, 0.01), shape =
 
 \item{save.intermediates}{A parameter stating whether you're interested in the final result only or also all of the intermediate time steps (beware, for long times this produces extremely large matrices).}
 }
+\value{
+
+}
 \description{
 If you don't know what you want, you should use the C++ version instead (the default for one.d.heat.eq()).
 }

@@ -17,6 +17,9 @@ one.d.heat.eq.neumann.memory(n, init.dat, alpha, dt, eps)
 
 \item{eps}{sometimes I've observed unexpected behaviour when the numbers get very small, in order to combat this I include an epsilon such that if a value is within that neighbourhood of zero they will be set to zero.  (Epsilon can be set to zero if you do not wish for this confound.)}
 }
+\value{
+
+}
 \description{
 This function only returns the final result and the initial data, rather than any of the intermediates.
 }

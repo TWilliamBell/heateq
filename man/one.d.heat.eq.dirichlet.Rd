@@ -17,6 +17,9 @@ one.d.heat.eq.dirichlet(n, soln, alpha, dt, eps)
 
 \item{eps}{}
 }
+\value{
+
+}
 \description{
 Numerical Solution to the Heat Equation with Dirichlet Boundary Conditions
 }

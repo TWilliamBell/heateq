@@ -5,19 +5,19 @@
 
 using namespace Rcpp;
 
-// c_heat
-Rcpp::NumericMatrix c_heat(int n, Rcpp::NumericVector init, Rcpp::String boundary, double alpha, double dt, double eps);
-RcppExport SEXP _heateq_c_heat(SEXP nSEXP, SEXP initSEXP, SEXP boundarySEXP, SEXP alphaSEXP, SEXP dtSEXP, SEXP epsSEXP) {
+// c_heat_neumann
+Rcpp::NumericMatrix c_heat_neumann(int n, Rcpp::NumericMatrix soln, double alpha, double eps, double dt, int space);
+RcppExport SEXP _heateq_c_heat_neumann(SEXP nSEXP, SEXP solnSEXP, SEXP alphaSEXP, SEXP epsSEXP, SEXP dtSEXP, SEXP spaceSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type init(initSEXP);
-    Rcpp::traits::input_parameter< Rcpp::String >::type boundary(boundarySEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type soln(solnSEXP);
     Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
-    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
     Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
-    rcpp_result_gen = Rcpp::wrap(c_heat(n, init, boundary, alpha, dt, eps));
+    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
+    Rcpp::traits::input_parameter< int >::type space(spaceSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_heat_neumann(n, soln, alpha, eps, dt, space));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -37,6 +37,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// c_heat
+Rcpp::NumericMatrix c_heat(int n, Rcpp::NumericVector init, Rcpp::String boundary, double alpha, double dt, double eps);
+RcppExport SEXP _heateq_c_heat(SEXP nSEXP, SEXP initSEXP, SEXP boundarySEXP, SEXP alphaSEXP, SEXP dtSEXP, SEXP epsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type init(initSEXP);
+    Rcpp::traits::input_parameter< Rcpp::String >::type boundary(boundarySEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
+    Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_heat(n, init, boundary, alpha, dt, eps));
+    return rcpp_result_gen;
+END_RCPP
+}
 // c_heat_dirichlet_memory
 Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init, double alpha, double eps, double dt, int space);
 RcppExport SEXP _heateq_c_heat_dirichlet_memory(SEXP nSEXP, SEXP initSEXP, SEXP alphaSEXP, SEXP epsSEXP, SEXP dtSEXP, SEXP spaceSEXP) {
@@ -50,38 +66,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
     Rcpp::traits::input_parameter< int >::type space(spaceSEXP);
     rcpp_result_gen = Rcpp::wrap(c_heat_dirichlet_memory(n, init, alpha, eps, dt, space));
-    return rcpp_result_gen;
-END_RCPP
-}
-// c_heat_memory
-Rcpp::NumericVector c_heat_memory(int n, Rcpp::NumericVector init, Rcpp::String boundary, double alpha, double dt, double eps);
-RcppExport SEXP _heateq_c_heat_memory(SEXP nSEXP, SEXP initSEXP, SEXP boundarySEXP, SEXP alphaSEXP, SEXP dtSEXP, SEXP epsSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type init(initSEXP);
-    Rcpp::traits::input_parameter< Rcpp::String >::type boundary(boundarySEXP);
-    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
-    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
-    Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
-    rcpp_result_gen = Rcpp::wrap(c_heat_memory(n, init, boundary, alpha, dt, eps));
-    return rcpp_result_gen;
-END_RCPP
-}
-// c_heat_neumann
-Rcpp::NumericMatrix c_heat_neumann(int n, Rcpp::NumericMatrix soln, double alpha, double eps, double dt, int space);
-RcppExport SEXP _heateq_c_heat_neumann(SEXP nSEXP, SEXP solnSEXP, SEXP alphaSEXP, SEXP epsSEXP, SEXP dtSEXP, SEXP spaceSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type soln(solnSEXP);
-    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
-    Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
-    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
-    Rcpp::traits::input_parameter< int >::type space(spaceSEXP);
-    rcpp_result_gen = Rcpp::wrap(c_heat_neumann(n, soln, alpha, eps, dt, space));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -101,14 +85,30 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// c_heat_memory
+Rcpp::NumericVector c_heat_memory(int n, Rcpp::NumericVector init, Rcpp::String boundary, double alpha, double dt, double eps);
+RcppExport SEXP _heateq_c_heat_memory(SEXP nSEXP, SEXP initSEXP, SEXP boundarySEXP, SEXP alphaSEXP, SEXP dtSEXP, SEXP epsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type init(initSEXP);
+    Rcpp::traits::input_parameter< Rcpp::String >::type boundary(boundarySEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
+    Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_heat_memory(n, init, boundary, alpha, dt, eps));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_heateq_c_heat", (DL_FUNC) &_heateq_c_heat, 6},
-    {"_heateq_c_heat_dirichlet", (DL_FUNC) &_heateq_c_heat_dirichlet, 6},
-    {"_heateq_c_heat_dirichlet_memory", (DL_FUNC) &_heateq_c_heat_dirichlet_memory, 6},
-    {"_heateq_c_heat_memory", (DL_FUNC) &_heateq_c_heat_memory, 6},
     {"_heateq_c_heat_neumann", (DL_FUNC) &_heateq_c_heat_neumann, 6},
+    {"_heateq_c_heat_dirichlet", (DL_FUNC) &_heateq_c_heat_dirichlet, 6},
+    {"_heateq_c_heat", (DL_FUNC) &_heateq_c_heat, 6},
+    {"_heateq_c_heat_dirichlet_memory", (DL_FUNC) &_heateq_c_heat_dirichlet_memory, 6},
     {"_heateq_c_heat_neumann_memory", (DL_FUNC) &_heateq_c_heat_neumann_memory, 6},
+    {"_heateq_c_heat_memory", (DL_FUNC) &_heateq_c_heat_memory, 6},
     {NULL, NULL, 0}
 };
 
