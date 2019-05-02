@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 
+//[[Rcpp::export]]
 Rcpp::NumericMatrix c_heat_dirichlet(int n, Rcpp::NumericMatrix soln,
                                      double alpha, double eps, double dt,
                                      int space) {
