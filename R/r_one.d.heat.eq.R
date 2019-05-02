@@ -11,7 +11,6 @@
 #' @param save.intermediates A parameter stating whether you're interested in the final result only or also all of the intermediate time steps (beware, for long times this produces extremely large matrices).
 #'
 #' @return
-#' @export
 #'
 #' @examples
 #' 
