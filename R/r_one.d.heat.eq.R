@@ -22,6 +22,7 @@ r_one.d.heat.eq <- function(n = 1000, init.dat = dgamma(seq(0, 5, 0.01),
   boundary <- stringr::str_to_lower(boundary)
   if (isTRUE(save.intermediates)) {
     soln <- matrix(nrow = length(init.dat), ncol = n)
+    cat(dim(soln))
     soln[ , 1] <- init.dat
     if (boundary == "neumann") {
       return(one.d.heat.eq.neumann(n, init.dat, alpha, dt, eps))
