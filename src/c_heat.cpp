@@ -1,6 +1,5 @@
 #include <Rcpp.h>
 
-//' @export
 // [[Rcpp::export]]
 Rcpp::NumericMatrix c_heat_neumann(int n, Rcpp::NumericMatrix soln,
                                    double alpha, double eps, double dt,
@@ -27,7 +26,6 @@ Rcpp::NumericMatrix c_heat_neumann(int n, Rcpp::NumericMatrix soln,
     return soln;
 }
 
-//' @export
 // [[Rcpp::export]]
 Rcpp::NumericMatrix c_heat_dirichlet(int n, Rcpp::NumericMatrix soln,
                                      double alpha, double eps, double dt,
@@ -54,7 +52,6 @@ Rcpp::NumericMatrix c_heat_dirichlet(int n, Rcpp::NumericMatrix soln,
     return soln;
 }
 
-//' @export
 // [[Rcpp::export]]
 Rcpp::NumericMatrix c_heat(int n, Rcpp::NumericVector init, 
                            Rcpp::String boundary,

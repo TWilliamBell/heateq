@@ -13,6 +13,7 @@ one.d.heat.eq <- function(init.dat, n = 50000,
     soln <- c_one.d.heat.eq(n, init.dat, boundary,
                             alpha, dt, eps, save.intermediates)
   } else {
+    cat("We're this far.")
     soln <- r_one.d.heat.eq(n, init.dat, boundary,
                             alpha, dt, eps, save.intermediates)
   }
