@@ -1,5 +1,5 @@
 #' A One-Dimensional Heat Equation solver written in R
-#' 
+#'
 #' If you don't know what you want, you should use the C++ version instead (the default for one.d.heat.eq()).
 #'
 #' @param n the Number of Time steps you wish to solve for.
@@ -13,19 +13,18 @@
 #' @return
 #'
 #' @examples
-#' 
+#'
 
-r_one.d.heat.eq <- function(n = 1000, init.dat = dgamma(seq(0, 5, 0.01), 
-                                                        shape = 3), 
-                            boundary = c("neumann", "dirichlet"), alpha = 1, 
+r_one.d.heat.eq <- function(n = 1000, init.dat = dgamma(seq(0, 5, 0.01),
+                                                        shape = 3),
+                            boundary = c("neumann", "dirichlet"), alpha = 1,
                             dt = 0.1, eps = 1e-5, save.intermediates = F) {
   boundary <- stringr::str_to_lower(boundary)
   if (isTRUE(save.intermediates)) {
     soln <- matrix(nrow = length(init.dat), ncol = n)
-    cat(dim(soln))
     soln[ , 1] <- init.dat
     if (boundary == "neumann") {
-      return(one.d.heat.eq.neumann(n, init.dat, alpha, dt, eps))
+      return(one.d.heat.eq.neumann(n, soln, alpha, dt, eps))
     } else if (boundary == "dirichlet") {
       return(one.d.heat.eq.dirichlet(n, soln, init.dat, dt, eps))
     } else {

@@ -1,6 +1,6 @@
 
 #' Numerical Solution to the Heat Equation with Neumann boundary conditions, written in R
-#' 
+#'
 #' This function is not very memory efficient since it saves all intermediate steps.  However it gives you all of the information.  If you don't know what you want you should use the C++ version instead.
 #'
 #' @param n the Number of Time steps you wish to solve for.
@@ -14,7 +14,7 @@
 #' @examples
 
 one.d.heat.eq.neumann <- function(n, soln, alpha, dt, eps) {
-  du <- rep(0, length(soln[ , 1]))
+  du <- rep(0, length(nrow(soln)))
   lambda <- dt*alpha/2
   for (i in seq_len(n)[-1]) {
     init <- soln[ , i-1]
