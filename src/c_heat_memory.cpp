@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 
+//' @export
 // [[Rcpp::export]]
 Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
                                             double alpha, double eps, double dt,
@@ -26,6 +27,7 @@ Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
   return heat;
 }
 
+//' @export
 // [[Rcpp::export]]
 Rcpp::NumericVector c_heat_neumann_memory(int n, Rcpp::NumericVector init,
                                           double alpha, double eps, double dt,
@@ -51,6 +53,8 @@ Rcpp::NumericVector c_heat_neumann_memory(int n, Rcpp::NumericVector init,
   }
   return heat;
 }
+
+//' @export
 
 // [[Rcpp::export]]
 Rcpp::NumericVector c_heat_memory(int n, Rcpp::NumericVector init, 
