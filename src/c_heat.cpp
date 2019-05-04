@@ -3,9 +3,9 @@
 // [[Rcpp::export]]
 Rcpp::NumericMatrix c_heat_neumann(int n, Rcpp::NumericMatrix soln,
                                    double alpha, double eps, double dt,
-                                   int space) {
+                                   int space, double dx) {
     Rcpp::NumericVector du (space);
-    double lambda = (dt*alpha)/2.0;
+    double lambda = (dt*alpha)/(2.0*dx);
     int i;
     int j;
     int k;
@@ -29,9 +29,9 @@ Rcpp::NumericMatrix c_heat_neumann(int n, Rcpp::NumericMatrix soln,
 // [[Rcpp::export]]
 Rcpp::NumericMatrix c_heat_dirichlet(int n, Rcpp::NumericMatrix soln,
                                      double alpha, double eps, double dt,
-                                     int space) {
+                                     int space, double dx) {
     Rcpp::NumericVector du (space);
-    double lambda = (dt*alpha)/2.0;
+    double lambda = (dt*alpha)/(2.0*dx);
     int i;
     int j;
     int k;
@@ -53,17 +53,17 @@ Rcpp::NumericMatrix c_heat_dirichlet(int n, Rcpp::NumericMatrix soln,
 }
 
 // [[Rcpp::export]]
-Rcpp::NumericMatrix c_heat(int n, Rcpp::NumericVector init, 
+Rcpp::NumericMatrix c_heat(int n, Rcpp::NumericVector init,
                            Rcpp::String boundary,
                            double alpha, double dt = 0.1,
-                           double eps = 1e-5) {
+                           double eps = 1e-5, double dx = 0.1) {
   int x = init.length();
   Rcpp::NumericMatrix soln(x, n);
   soln( Rcpp::_ , 0) = init;
   if (boundary == "neumann") {
-    soln = c_heat_neumann(n, soln, alpha, eps, dt, x);
+    soln = c_heat_neumann(n, soln, alpha, eps, dt, x, dx);
   } else if (boundary == "dirichlet") {
-    soln = c_heat_dirichlet(n, soln, alpha, eps, dt, x);
+    soln = c_heat_dirichlet(n, soln, alpha, eps, dt, x, dx);
   } else {
     Rcpp::stop("Boundary condition not recognized.");
   }

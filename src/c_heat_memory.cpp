@@ -3,9 +3,9 @@
 // [[Rcpp::export]]
 Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
                                             double alpha, double eps, double dt,
-                                            int space) {
+                                            int space, double dx) {
   Rcpp::NumericVector du (space);
-  double lambda = (dt*alpha)/2.0;
+  double lambda = (dt*alpha)/(2.0*dx);
   int i;
   int j;
   int k;
@@ -29,9 +29,9 @@ Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
 // [[Rcpp::export]]
 Rcpp::NumericVector c_heat_neumann_memory(int n, Rcpp::NumericVector init,
                                           double alpha, double eps, double dt,
-                                          int space) {
+                                          int space, double dx) {
   Rcpp::NumericVector du (space);
-  double lambda = (dt*alpha)/2.0;
+  double lambda = (dt*alpha)/(2.0*dx);
   int i;
   int j;
   int k;
@@ -53,15 +53,15 @@ Rcpp::NumericVector c_heat_neumann_memory(int n, Rcpp::NumericVector init,
 }
 
 // [[Rcpp::export]]
-Rcpp::NumericVector c_heat_memory(int n, Rcpp::NumericVector init, 
+Rcpp::NumericVector c_heat_memory(int n, Rcpp::NumericVector init,
                                   Rcpp::String boundary,
                                   double alpha, double dt = 0.1,
-                                  double eps = 1e-5) {
+                                  double eps = 1e-5, double dx = 0.1) {
   int x = init.length();
   if (boundary == "neumann") {
-    return c_heat_neumann_memory(n, init, alpha, eps, dt, x);
+    return c_heat_neumann_memory(n, init, alpha, eps, dt, x, dx);
   } else if (boundary == "dirichlet") {
-    return c_heat_dirichlet_memory(n, init, alpha, eps, dt, x);
+    return c_heat_dirichlet_memory(n, init, alpha, eps, dt, x, dx);
   } else {
     Rcpp::stop("Boundary condition not recognized.");
   }

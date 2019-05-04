@@ -13,9 +13,9 @@
 #'
 #' @examples
 
-one.d.heat.eq.neumann <- function(n, soln, alpha, dt, eps, dx) {
+one.d.heat.eq.neumann <- function(n, soln, alpha, dt, eps) {
   du <- rep(0, length(nrow(soln)))
-  lambda <- dt*alpha/(2*dx)
+  lambda <- dt*alpha/2
   for (i in seq_len(n)[-1]) {
     init <- soln[ , i-1]
     du[1] <- init[1]-init[2]

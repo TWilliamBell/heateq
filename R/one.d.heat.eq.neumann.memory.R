@@ -12,9 +12,9 @@
 #'
 #' @examples
 
-one.d.heat.eq.neumann.memory <- function(n, init.dat, alpha, dt, eps, dx) {
+one.d.heat.eq.neumann.memory <- function(n, init.dat, alpha, dt, eps) {
   du <- rep(0, length(init.dat))
-  lambda <- dt*alpha/(2*dx)
+  lambda <- dt*alpha/2
   init <- init.dat
   for (i in seq_len(n)[-1]) {
     du[1] <- init[1]-init[2]
