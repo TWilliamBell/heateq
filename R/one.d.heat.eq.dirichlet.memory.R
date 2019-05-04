@@ -1,6 +1,6 @@
-one.d.heat.eq.dirichlet.memory <- function(n, init.dat, alpha, dt, eps) {
+one.d.heat.eq.dirichlet.memory <- function(n, init.dat, alpha, dt, eps, dx) {
   du <- rep(0, length(init.dat))
-  lambda <- dt*alpha/2
+  lambda <- dt*alpha/(2*dx)
   init <- init.dat
   for (i in seq_len(n)[-1]) {
     du[1] <- 2*init[1]-init[2]
