@@ -27,9 +27,7 @@ one.d.heat.eq <- function(init.dat, n = 50000,
     results$full <- t(soln)
     t <- c(seq_len(n)*dt)
     rownames(results$full) <- t
-    if (!is.null(dx)) {
-      colnames(results$full) <- seq_len(nrow(soln))*dx
-    }
+    colnames(results$full) <- seq_len(nrow(soln))*dx
   }
   class(results) <- "heat"
   results
