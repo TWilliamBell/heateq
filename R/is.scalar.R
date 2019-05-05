@@ -1,1 +1,1 @@
-is.scalar <- function(x) {is.vector(x) | length(x) == 1}
+is.scalar <- function(x) {is.atomic(x) | length(x) == 1}
