@@ -3,7 +3,7 @@
 plot.heat <- function(x, cex = 0.01, xaxt = "n", 
                       yaxt = "n", mar = c(0, 0, 0, 0), ...) {
   if (isTRUE(x$intermediates.saved)) {
-    n <- ncol(x$full)
+    n <- nrow(x$full)
     par(mfrow = c(2, 2), mar = mar)
     range.val <- range(x$full[1 , ])
     range.val[1] <- min(range.val[1], -0.01)
