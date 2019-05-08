@@ -18,23 +18,23 @@
 r_one.d.heat.eq <- function(n = 1000, init.dat = dgamma(seq(0, 5, 0.01),
                                                         shape = 3),
                             boundary = c("neumann", "dirichlet"), alpha = 1,
-                            dt = 0.1, eps = 1e-5, save.intermediates = F) {
+                            dt = 0.1, dx = 0.1, eps = 1e-5, save.intermediates = F) {
   boundary <- stringr::str_to_lower(boundary)
   if (isTRUE(save.intermediates)) {
     soln <- matrix(nrow = length(init.dat), ncol = n)
     soln[ , 1] <- init.dat
     if (boundary == "neumann") {
-      return(one.d.heat.eq.neumann(n, soln, alpha, dt, eps))
+      return(one.d.heat.eq.neumann(n, soln, alpha, dt, eps, dx))
     } else if (boundary == "dirichlet") {
-      return(one.d.heat.eq.dirichlet(n, soln, init.dat, dt, eps))
+      return(one.d.heat.eq.dirichlet(n, soln, init.dat, dt, eps, dx))
     } else {
       stop("Sorry, I don't recognize that boundary condition yet.")
     }
   } else {
     if (boundary == "neumann") {
-      return(one.d.heat.eq.neumann.memory(n, init.dat, alpha, dt, eps))
+      return(one.d.heat.eq.neumann.memory(n, init.dat, alpha, dt, eps, dx))
     } else if (boundary == "dirichlet") {
-      return(one.d.heat.eq.dirichlet.memory(n, init.dat, init.dat, dt, eps))
+      return(one.d.heat.eq.dirichlet.memory(n, init.dat, init.dat, dt, eps, dx))
     } else {
       stop("Sorry, I don't recognize that boundary condition yet.")
     }
