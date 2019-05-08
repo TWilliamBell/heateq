@@ -4,17 +4,17 @@
 
 one.d.heat.eq <- function(init.dat, n = 50000,
                           boundary = c("Neumann", "Dirichlet"),
-                          alpha = 1, dt = 0.1, eps = 1e-5, cpp = T,
-                          save.intermediates = F, dx = NULL) {
+                          alpha = 1, dt = 0.1, dx = 0.1, eps = 1e-5, cpp = T,
+                          save.intermediates = F) {
   if (!is.scalar(alpha) | !is.scalar(dt) | !is.scalar(eps) | !is.scalar(n)) {
     stop("Some input that should be a scalar is not.")
   }
   if (isTRUE(cpp)) {
     soln <- c_one.d.heat.eq(n, init.dat, boundary,
-                            alpha, dt, eps, save.intermediates)
+                            alpha, dt, eps, save.intermediates, dx)
   } else {
     soln <- r_one.d.heat.eq(n, init.dat, boundary,
-                            alpha, dt, eps, save.intermediates)
+                            alpha, dt, eps, save.intermediates, dx)
   }
   results <- list(initial.data = init.dat,
                   n.steps = n, time.passed = n*dt,
