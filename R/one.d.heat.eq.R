@@ -11,7 +11,14 @@
 #' shut down RStudio, in order to address this I hope to develop a rule of thumb for an average operating system (= my operating system)
 #' for how large of an array should generate an error.
 #' 
-#' @return 
+#' @return finalresults The state of the data on the final time step.
+#' @return full If save.intermediates = T, this will be a matrix containing the data at every time step.  Time along the rows, spatial
+#' dimension along the columns.
+#' @return initial.data The data at the start.
+#' @return n.steps The number of time steps chosen.
+#' @return time.passed The amount of time passed, i.e. n*dt.
+#' @return intermediates.saved Whether values other than the initial and final data were saved, necessary Boolean for the plot.heat method.
+#'
 #' @export
 
 one.d.heat.eq <- function(init.dat, n = 50000,
