@@ -6,9 +6,7 @@ Rcpp::NumericMatrix c_heat_neumann(int n, Rcpp::NumericMatrix soln,
                                    int space, double dx) {
     Rcpp::NumericVector du (space);
     double lambda = (dt*alpha)/(2.0*dx);
-    int i;
-    int j;
-    int k;
+    int i; int j; int k;
     for (i = 1; i < n; i = i+1) {
         Rcpp::NumericVector heat = soln( Rcpp::_ , i-1);
         du[0] = heat[0]-heat[1];
@@ -32,9 +30,7 @@ Rcpp::NumericMatrix c_heat_dirichlet(int n, Rcpp::NumericMatrix soln,
                                      int space, double dx) {
     Rcpp::NumericVector du (space);
     double lambda = (dt*alpha)/(2.0*dx);
-    int i;
-    int j;
-    int k;
+    int i; int j; int k;
     for (i = 1; i < n; i = i+1) {
         Rcpp::NumericVector heat = soln( Rcpp::_ , i-1);
         du[0] = 2.0*heat[0]-heat[1];
