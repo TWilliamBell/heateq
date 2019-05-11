@@ -6,9 +6,7 @@ Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
                                             int space, double dx) {
   Rcpp::NumericVector du (space);
   double lambda = (dt*alpha)/(2.0*dx);
-  int i;
-  int j;
-  int k;
+  int i; int j; int k;
   Rcpp::NumericVector heat (space);
   du[0] = 2.0*init[0]-init[1];
   for (j = 1; j < space-1; j = j+1) {
@@ -43,9 +41,7 @@ Rcpp::NumericVector c_heat_neumann_memory(int n, Rcpp::NumericVector init,
                                           int space, double dx) {
   Rcpp::NumericVector du (space);
   double lambda = (dt*alpha)/(2.0*dx);
-  int i;
-  int j;
-  int k;
+  int i; int j; int k;
   Rcpp::NumericVector heat (space);
   du[0] = init[0]-init[1];
   for (j = 1; j < space-1; j = j+1) {
