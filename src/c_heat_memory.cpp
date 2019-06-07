@@ -1,5 +1,13 @@
 #include <Rcpp.h>
 
+double absf(double x) { // Sorry, avoiding including the entire cmath library for simple floating point absolute values.
+  if (x < 0) { 
+    return -x; 
+  } else {
+    return x;
+  }
+}
+
 // [[Rcpp::export]]
 Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
                                             double alpha, double eps, double dt,
@@ -27,7 +35,7 @@ Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
     du[space-1] = 2.0*heat[space-1]-heat[space-2];
     for (k = 0; k <= space-1; k = k+1) {
       heat[k] = heat[k] - lambda*du[k];
-      if (heat[k] < eps) {
+      if (absf(heat[k]) < eps) {
         heat[k] = 0.0;
       }
     }
@@ -62,7 +70,7 @@ Rcpp::NumericVector c_heat_neumann_memory(int n, Rcpp::NumericVector init,
     du[space-1] = heat[space-1]-heat[space-2];
     for (k = 0; k <= space-1; k = k+1) {
       heat[k] = heat[k] - lambda*du[k];
-      if (heat[k] < eps) {
+      if (absf(heat[k]) < eps) {
         heat[k] = 0.0;
       }
     }
