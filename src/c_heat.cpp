@@ -53,7 +53,7 @@ Rcpp::NumericMatrix c_heat_dirichlet(int n, Rcpp::NumericMatrix soln, // Mostly 
                                                       // condition (u = 0)
         for (k = 0; k < space-1; k = k+1) {
             soln(k, i) = heat[k] - lambda*du[k];
-            if (soln(k, i) < eps) {
+            if (absf(soln(k, i)) < eps) {
                 soln(k, i) = 0.0;
             }
         }
