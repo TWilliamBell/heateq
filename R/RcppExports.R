@@ -25,3 +25,11 @@ c_heat_memory <- function(n, init, boundary, alpha, dt = 0.1, eps = 1e-5, dx = 0
     .Call(`_heateq_c_heat_memory`, n, init, boundary, alpha, dt, eps, dx)
 }
 
+heateq_dirichlet <- function(n, y, c, dt, dx) {
+    .Call(`_heateq_heateq_dirichlet`, n, y, c, dt, dx)
+}
+
+heateq_neumann <- function(n, y, c, dt, dx) {
+    .Call(`_heateq_heateq_neumann`, n, y, c, dt, dx)
+}
+
