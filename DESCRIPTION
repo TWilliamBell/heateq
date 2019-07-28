@@ -1,14 +1,13 @@
 Package: heateq
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Solve the Heat Equation in Low Dimensions
+Version: 0.1.0
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Thomas",
+           family = "Bell",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "twilliambell97@gmail.com")
+Description: The Heat equation describes many natural processes, but has a fairly simple difference equation version.  I've implemented it using Rcpp, partially as a learning exercise.
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
