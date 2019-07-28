@@ -107,6 +107,36 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// heateq_dirichlet
+Rcpp::NumericMatrix heateq_dirichlet(int n, Rcpp::NumericMatrix y, double c, double dt, double dx);
+RcppExport SEXP _heateq_heateq_dirichlet(SEXP nSEXP, SEXP ySEXP, SEXP cSEXP, SEXP dtSEXP, SEXP dxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type c(cSEXP);
+    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
+    Rcpp::traits::input_parameter< double >::type dx(dxSEXP);
+    rcpp_result_gen = Rcpp::wrap(heateq_dirichlet(n, y, c, dt, dx));
+    return rcpp_result_gen;
+END_RCPP
+}
+// heateq_neumann
+Rcpp::NumericMatrix heateq_neumann(int n, Rcpp::NumericMatrix y, double c, double dt, double dx);
+RcppExport SEXP _heateq_heateq_neumann(SEXP nSEXP, SEXP ySEXP, SEXP cSEXP, SEXP dtSEXP, SEXP dxSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type c(cSEXP);
+    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
+    Rcpp::traits::input_parameter< double >::type dx(dxSEXP);
+    rcpp_result_gen = Rcpp::wrap(heateq_neumann(n, y, c, dt, dx));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_heateq_c_heat_neumann", (DL_FUNC) &_heateq_c_heat_neumann, 7},
@@ -115,6 +145,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_heateq_c_heat_dirichlet_memory", (DL_FUNC) &_heateq_c_heat_dirichlet_memory, 7},
     {"_heateq_c_heat_neumann_memory", (DL_FUNC) &_heateq_c_heat_neumann_memory, 7},
     {"_heateq_c_heat_memory", (DL_FUNC) &_heateq_c_heat_memory, 7},
+    {"_heateq_heateq_dirichlet", (DL_FUNC) &_heateq_heateq_dirichlet, 5},
+    {"_heateq_heateq_neumann", (DL_FUNC) &_heateq_heateq_neumann, 5},
     {NULL, NULL, 0}
 };
 
