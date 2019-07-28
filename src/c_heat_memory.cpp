@@ -1,20 +1,14 @@
 #include <Rcpp.h>
 
-double absf(double x) { // Sorry, avoiding including the entire cmath library for simple floating point absolute values.
-  if (x < 0) { 
-    return -x; 
-  } else {
-    return x;
-  }
-}
-
 // [[Rcpp::export]]
 Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
                                             double alpha, double eps, double dt,
                                             int space, double dx) {
   Rcpp::NumericVector du (space);
   double lambda = (dt*alpha)/(2.0*dx);
-  int i; int j; int k;
+  int i;
+  int j;
+  int k;
   Rcpp::NumericVector heat (space);
   du[0] = 2.0*init[0]-init[1];
   for (j = 1; j < space-1; j = j+1) {
@@ -35,7 +29,7 @@ Rcpp::NumericVector c_heat_dirichlet_memory(int n, Rcpp::NumericVector init,
     du[space-1] = 2.0*heat[space-1]-heat[space-2];
     for (k = 0; k <= space-1; k = k+1) {
       heat[k] = heat[k] - lambda*du[k];
-      if (absf(heat[k]) < eps) {
+      if (heat[k] < eps) {
         heat[k] = 0.0;
       }
     }
@@ -49,7 +43,9 @@ Rcpp::NumericVector c_heat_neumann_memory(int n, Rcpp::NumericVector init,
                                           int space, double dx) {
   Rcpp::NumericVector du (space);
   double lambda = (dt*alpha)/(2.0*dx);
-  int i; int j; int k;
+  int i;
+  int j;
+  int k;
   Rcpp::NumericVector heat (space);
   du[0] = init[0]-init[1];
   for (j = 1; j < space-1; j = j+1) {
@@ -70,7 +66,7 @@ Rcpp::NumericVector c_heat_neumann_memory(int n, Rcpp::NumericVector init,
     du[space-1] = heat[space-1]-heat[space-2];
     for (k = 0; k <= space-1; k = k+1) {
       heat[k] = heat[k] - lambda*du[k];
-      if (absf(heat[k]) < eps) {
+      if (heat[k] < eps) {
         heat[k] = 0.0;
       }
     }
