@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' plot(heateq2d(matrix(runif(10000), nrow = 100)))
+#' plot(two.d.heat.eq(matrix(runif(10000), nrow = 100)))
 
 plot.heat2 <- function(heat, ...) {
   par(mfrow = c(1, 2), mar = c(5, 2, 4, 0) + 0.1)
