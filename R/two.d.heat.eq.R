@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' heateq2d(matrix(runif(10000), nrow = 100))
+#' two.d.heat.eq(matrix(runif(10000), nrow = 100))
 
 two.d.heat.eq <- function(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
                      boundary = "neumann") {
