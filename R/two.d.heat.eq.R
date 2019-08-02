@@ -3,11 +3,11 @@
 #' Given the formula dH/dt = c*(d^2H/dx^2+d^2H/dy^2), we can assign a meaning to all of the parameters.
 #'
 #' @param n the number of time steps.
-#' @param init a matrix of initial values in two dimensions.
+#' @param init.dat a matrix of initial values in two dimensions.
 #' @param c a conductivity constant.
 #' @param dt the length of the time step.
 #' @param dx the length of the spatial steps in both directions.
-#' @param bound boundary condition, either "neumann" or "dirichlet".
+#' @param boundary boundary condition, either "neumann" or "dirichlet".
 #'
 #' @return The return value is a list of type "heat2" that includes the initial condition, final result (a matrix), and the boundary condition.
 #'
