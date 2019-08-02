@@ -16,7 +16,7 @@
 #' @examples
 #' heateq2d(matrix(runif(10000), nrow = 100))
 
-heateq2d <- function(n = 1000, init, c = 1, dt = 0.01, dx = 0.1,
+two.d.heateq <- function(n = 1000, init, c = 1, dt = 0.01, dx = 0.1,
                      bound = "neumann") {
   if (bound == "neumann") {
     final <- heateq_neumann(n = n, y = init, c = c, dt = dt, dx = dx)
@@ -25,7 +25,9 @@ heateq2d <- function(n = 1000, init, c = 1, dt = 0.01, dx = 0.1,
   } else {
     stop("Boundary condition not recognized.")
   }
-  final_result <- list(init.con = init, final = final, bound = bound)
-  class(final_result) <- "heat2"
-  final_result
+  results <- list(initial.data = init.dat,
+                  n.steps = n, time.passed = n*dt)
+  results$final <- final
+  class(results) <- "heat2"
+  results
 }
