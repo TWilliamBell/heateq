@@ -34,7 +34,7 @@ one.d.heat.eq <- function(init.dat, n = 50000,
                   n.steps = n, time.passed = n*dt,
                   intermediates.saved = save.intermediates, dim = 1L)
   if (isFALSE(save.intermediates)) {
-    results$finalresults <- soln
+    results$final.results <- soln
   }
   if (isTRUE(save.intermediates)) {
     results$full <- t(soln)
