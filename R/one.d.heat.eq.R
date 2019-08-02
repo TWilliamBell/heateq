@@ -32,7 +32,7 @@ one.d.heat.eq <- function(init.dat, n = 50000,
                             alpha, dt, eps, save.intermediates, dx)
   results <- list(initial.data = init.dat,
                   n.steps = n, time.passed = n*dt,
-                  intermediates.saved = save.intermediates)
+                  intermediates.saved = save.intermediates, dim = 1L)
   if (isFALSE(save.intermediates)) {
     results$finalresults <- soln
   }
