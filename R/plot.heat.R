@@ -19,23 +19,25 @@ plot.heat <- function(x, cex = 0.01, xaxt = "n",
       par(mfrow = c(1, 1), mar = c(5, 4, 4, 2) + 0.1)
     } else {
       par(mfrow = c(1, 2), mar = mar)
-      range.val <- range(c(x$initial.data, x$finalresults))
+      range.val <- range(c(x$initial.data, x$final.results))
       range.val[1] <- min(range.val[1], -0.01)
       plot(x$initial.data, cex = 0.01, yaxt = "n", xaxt = "n", 
            ylim = range.val, ...)
-      plot(x$finalresults, cex = 0.01, yaxt = "n", xaxt = "n", 
+      plot(x$final.results, cex = 0.01, yaxt = "n", xaxt = "n", 
            ylim = range.val, ...)
       par(mfrow = c(1, 1), mar = c(5, 4, 4, 2) + 0.1)
     }
   } else if (dim == 2L) {
-    plot.heat2 <- function(heat, ...) {
-    par(mfrow = c(1, 2), mar = c(5, 2, 4, 0) + 0.1)
-    range.val <- seq(from = if (heat$boundary == "neumann") {range(heat$initial.data)[1]} else if (heat$boundary == "dirichlet") {min(range(heat$initial.data)[1], 0)},
+      plot.heat2 <- function(heat, ...) {
+      par(mfrow = c(1, 2), mar = c(5, 2, 4, 0) + 0.1)
+      range.val <- seq(from = if (heat$boundary == "neumann") {range(heat$initial.data)[1]} else if (heat$boundary == "dirichlet") {min(range(heat$initial.data)[1], 0)},
                    to = if (heat$boundary == "neumann") {range(heat$initial.data)[2]} else if (heat$boundary == "dirichlet") {max(range(heat$initial.data)[2], 0)},
                    length.out = 11)
-    cols <- heat.colors(10)
-    image(heat$initial.data, breaks = range.val, col = cols, ...)
-    image(heat$final, breaks = range.val, col = cols, yaxt = "n", ...)
-    par(mfrow = c(1, 1), mar = c(5, 4, 4, 2) + 0.1)
-  } else {stop("No plot method for given dimension.")}
+      cols <- heat.colors(10)
+      image(heat$initial.data, breaks = range.val, col = cols, ...)
+      image(heat$final.results, breaks = range.val, col = cols, yaxt = "n", ...)
+      par(mfrow = c(1, 1), mar = c(5, 4, 4, 2) + 0.1)
+  } else {
+      stop("No plot method for given dimension.")
+  }
 }
