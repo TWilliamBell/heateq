@@ -3,13 +3,45 @@
 \name{one.d.heat.eq}
 \alias{one.d.heat.eq}
 \title{The Heat Equation Solver
-This function takes in all the options possible in order to choose how to solve the heat equation, the boundary conditions, and what language to use.}
+This function takes in all the options possible in order to choose how to solve the heat equation, and the boundary conditions.}
 \usage{
 one.d.heat.eq(init.dat, n = 50000, boundary = c("Neumann",
-  "Dirichlet"), alpha = 1, dt = 0.1, eps = 1e-05, cpp = T,
-  save.intermediates = F, dx = NULL)
+  "Dirichlet"), alpha = 1, dt = 0.1, dx = 0.1, eps = 0,
+  save.intermediates = F)
+}
+\arguments{
+\item{init.dat}{A vector representing the evenly spaced points describing the initial state of the system.}
+
+\item{n}{The number of time steps to run the simulation for.}
+
+\item{boundary}{A string, either "Neumann" or "Dirichlet" (any capitalization allowed).}
+
+\item{alpha}{The rate constant for the heat equation, 'a' in du/dt = a d^2u/(dx^2).}
+
+\item{dt}{The length of each time step.}
+
+\item{eps}{If abs(eps) > 0, then if the value of the data at some point is less than eps, it will be truncated to zero.}
+
+\item{save.intermediates}{Recording the data at each time step is quite memory-intensive, but if one is interested in the evolution
+of the system rather than just the outcome, it may be desirable to record them.  For large values MALLOC in C++ might complain and
+shut down RStudio, in order to address this I hope to develop a rule of thumb for an average operating system (= my operating system)
+for how large of an array should generate an error.}
+}
+\value{
+finalresults The state of the data on the final time step.
+
+full If save.intermediates = T, this will be a matrix containing the data at every time step.  Time along the rows, spatial
+dimension along the columns.
+
+initial.data The data at the start.
+
+n.steps The number of time steps chosen.
+
+time.passed The amount of time passed, i.e. n*dt.
+
+intermediates.saved Whether values other than the initial and final data were saved, necessary Boolean for the plot.heat method.
 }
 \description{
 The Heat Equation Solver
-This function takes in all the options possible in order to choose how to solve the heat equation, the boundary conditions, and what language to use.
+This function takes in all the options possible in order to choose how to solve the heat equation, and the boundary conditions.
 }

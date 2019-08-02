@@ -18,9 +18,9 @@
 
 two.d.heat.eq <- function(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
                      boundary = "neumann") {
-  if (bound == "neumann") {
+  if (boundary == "neumann") {
     final <- heateq_neumann(n = n, y = init.dat, c = c, dt = dt, dx = dx)
-  } else if (bound == "dirichlet") {
+  } else if (boundary == "dirichlet") {
     final <- heateq_dirichlet(n = n, y = init.dat, c = c, dt = dt, dx = dx)
   } else {
     stop("Boundary condition not recognized.")

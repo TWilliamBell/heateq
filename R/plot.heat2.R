@@ -10,11 +10,11 @@
 
 plot.heat2 <- function(heat, ...) {
   par(mfrow = c(1, 2), mar = c(5, 2, 4, 0) + 0.1)
-  range.val <- seq(from = if (heat$boundary == "neumann") {range(heat$init.dat)[1]} else if (heat$boundary == "dirichlet") {min(range(heat$init.dat)[1], 0)},
-                   to = if (heat$boundary == "neumann") {range(heat$init.dat)[2]} else if (heat$boundary == "dirichlet") {max(range(heat$init.dat)[2], 0)},
+  range.val <- seq(from = if (heat$boundary == "neumann") {range(heat$initial.data)[1]} else if (heat$boundary == "dirichlet") {min(range(heat$initial.data)[1], 0)},
+                   to = if (heat$boundary == "neumann") {range(heat$initial.data)[2]} else if (heat$boundary == "dirichlet") {max(range(heat$initial.data)[2], 0)},
                    length.out = 11)
   cols <- heat.colors(10)
-  image(heat$init.dat, breaks = range.val, col = cols, ...)
+  image(heat$initial.data, breaks = range.val, col = cols, ...)
   image(heat$final, breaks = range.val, col = cols, yaxt = "n", ...)
   par(mfrow = c(1, 1), mar = c(5, 4, 4, 2) + 0.1)
 }
