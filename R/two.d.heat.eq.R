@@ -28,6 +28,6 @@ two.d.heat.eq <- function(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
   results <- list(initial.data = init.dat,
                   n.steps = n, time.passed = n*dt, boundary = boundary, dim = 2L)
   results$final <- final
-  class(results) <- "heat2"
+  class(results) <- "heat"
   results
 }
