@@ -17,7 +17,7 @@
 #' heateq2d(matrix(runif(10000), nrow = 100))
 
 two.d.heat.eq <- function(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
-                     bound = "neumann") {
+                     boundary = "neumann") {
   if (bound == "neumann") {
     final <- heateq_neumann(n = n, y = init.dat, c = c, dt = dt, dx = dx)
   } else if (bound == "dirichlet") {
@@ -26,7 +26,7 @@ two.d.heat.eq <- function(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
     stop("Boundary condition not recognized.")
   }
   results <- list(initial.data = init.dat,
-                  n.steps = n, time.passed = n*dt)
+                  n.steps = n, time.passed = n*dt, boundary = boundary)
   results$final <- final
   class(results) <- "heat2"
   results
