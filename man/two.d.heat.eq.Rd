@@ -10,15 +10,15 @@ two.d.heat.eq(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
 \arguments{
 \item{n}{the number of time steps.}
 
+\item{init.dat}{a matrix of initial values in two dimensions.}
+
 \item{c}{a conductivity constant.}
 
 \item{dt}{the length of the time step.}
 
 \item{dx}{the length of the spatial steps in both directions.}
 
-\item{init}{a matrix of initial values in two dimensions.}
-
-\item{bound}{boundary condition, either "neumann" or "dirichlet".}
+\item{boundary}{boundary condition, either "neumann" or "dirichlet".}
 }
 \value{
 The return value is a list of type "heat2" that includes the initial condition, final result (a matrix), and the boundary condition.
@@ -27,5 +27,5 @@ The return value is a list of type "heat2" that includes the initial condition, 
 Given the formula dH/dt = c*(d^2H/dx^2+d^2H/dy^2), we can assign a meaning to all of the parameters.
 }
 \examples{
-heateq2d(matrix(runif(10000), nrow = 100))
+two.d.heat.eq(matrix(runif(10000), nrow = 100))
 }
