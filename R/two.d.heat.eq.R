@@ -18,6 +18,9 @@
 
 two.d.heat.eq <- function(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
                      boundary = "neumann") {
+  if (!is.scalar(alpha) | !is.scalar(dt) | !is.scalar(eps) | !is.scalar(n)) {
+    stop("Some input that should be a scalar is not.")
+  }
   if (boundary == "neumann") {
     final <- heateq_neumann(n = n, y = init.dat, c = c, dt = dt, dx = dx)
   } else if (boundary == "dirichlet") {
