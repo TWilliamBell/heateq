@@ -14,7 +14,11 @@
 #' @export
 #'
 #' @examples
-#' two.d.heat.eq(matrix(runif(10000), nrow = 100))
+#' two.d.heat.eq(init.dat = matrix(runif(10000), nrow = 100))
+#' a <- matrix(dnorm((-49:50)/25), nrow = 100, ncol = 100)
+#' mound <- a+t(a)
+#' smaller.mound <- two.d.heat.eq(n = 3000, init.dat = mound)
+#' plot(smaller.mound)
 
 two.d.heat.eq <- function(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
                      boundary = "neumann") {
