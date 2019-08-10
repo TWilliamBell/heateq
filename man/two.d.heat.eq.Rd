@@ -27,5 +27,9 @@ The return value is a list of type "heat2" that includes the initial condition, 
 Given the formula dH/dt = c*(d^2H/dx^2+d^2H/dy^2), we can assign a meaning to all of the parameters.
 }
 \examples{
-two.d.heat.eq(matrix(runif(10000), nrow = 100))
+two.d.heat.eq(init.dat = matrix(runif(10000), nrow = 100))
+a <- matrix(dnorm((-49:50)/25), nrow = 100, ncol = 100)
+mound <- a+t(a)
+smaller.mound <- two.d.heat.eq(n = 3000, init.dat = mound)
+plot(smaller.mound)
 }
