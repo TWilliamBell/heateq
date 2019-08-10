@@ -22,7 +22,7 @@
 
 two.d.heat.eq <- function(n = 1000, init.dat, c = 1, dt = 0.01, dx = 0.1,
                      boundary = "neumann") {
-  if (!is.scalar(c) | !is.scalar(dt) | !is.scalar(eps) | !is.scalar(n)) {
+  if (!is.scalar(c) | !is.scalar(dt) | !is.scalar(n)) {
     stop("Some input that should be a scalar is not.")
   }
   if (boundary == "neumann") {
